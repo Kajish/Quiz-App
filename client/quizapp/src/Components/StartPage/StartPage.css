@@ -1,0 +1,78 @@
+.component1 {
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.component1 h1 {
+  color: #000;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.component1 div {
+  margin-bottom: 25px;
+}
+
+.component1 label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.component1 input[type="text"],
+.component1 input[type="email"] {
+  width: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 6px;
+  font-weight: 500;
+  font-size: 15px;
+  border: 1px solid #292828;
+  border-radius: 4px;
+}
+
+.component1 input[type="email"].error {
+  background-color: #ffc0c0; /* Light red background color for error */
+}
+
+.start-button {
+  margin-top: 30px;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #ccc;
+  border: none;
+  border-radius: 4px;
+  cursor: not-allowed;
+}
+
+.start-button.valid {
+  background-color: #007bff;
+  cursor: pointer;
+}
+
+.error-message {
+  font-size: medium;
+  color: red;
+  font-weight: 550;
+}
+
+.footer {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.footer-text {
+  display: inline-block;
+  margin-right: 10px;
+  color: #777;
+}
+
+.footer-pointer {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #777;
+}

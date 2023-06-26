@@ -1,0 +1,25 @@
+.footer-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  color: #fff;
+  height: 60px; /* Adjust the height value as per your requirements */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-line {
+  border: none;
+  border-top: 1px solid #fff; /* Line separator */
+  margin: 10px 0;
+}
+
+.footer-content a {
+  margin: 0 10px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-content a:hover {
+  border-bottom: 2px solid #fff; /* Highlight effect on hover */
+}

@@ -11,7 +11,6 @@ const Quiz = require("../models/quiz");
 // Signup controller.....................
 exports.signup = async (req, res) => {
   try {
-    console.log("inside signup");
     if (!req.body.username || !req.body.email || !req.body.password) {
       // Prompt the user to enter the required fields
       return res.status(400).json({
@@ -100,7 +99,7 @@ exports.login = async (req, res) => {
     });
 
     // Fetch quizzes belonging to the user
-    const quizzes = await Quiz.find({ createdBy: user._id }).select(
+    const quizzes = await Quiz.findOne({ createdBy: user._id }).select(
       "title _id link"
     );
 
@@ -154,7 +153,6 @@ exports.signout = async (req, res) => {
 //
 // Delete account controller
 exports.deleteAccount = async (req, res) => {
-  console.log("heheh");
   try {
     const userId = req.user._id;
     console.log(userId);
