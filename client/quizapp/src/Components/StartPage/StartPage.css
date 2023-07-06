@@ -19,10 +19,10 @@
   margin-bottom: 5px;
 }
 
-.component1 input[type="text"],
-.component1 input[type="email"] {
+.component1 input[type='text'],
+.component1 input[type='email'] {
   width: 100%;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 6px;
   font-weight: 500;
   font-size: 15px;
@@ -30,16 +30,16 @@
   border-radius: 4px;
 }
 
-.component1 input[type="email"].error {
+.component1 input[type='email'].error {
   background-color: #ffc0c0; /* Light red background color for error */
 }
 
 .start-button {
   margin-top: 30px;
   display: block;
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
+  width: 104%;
+  padding: 8px;
+  font-size: 17px;
   color: #fff;
   background-color: #ccc;
   border: none;

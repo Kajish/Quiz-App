@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import "./Quiz.css";
-import QuizResult from "../QuizResult/QuizResult";
-
+import React, { useState } from 'react';
+import './Quiz.css';
+import QuizResult from '../QuizResult/QuizResult';
+import Popup from '../ConfirmationBox/ConfirmationBox';
+import { calculateScore } from '../../Services/QuizService';
+import Button from '../Button/Button';
 const Quiz = (props) => {
   const { id, userName, userEmail, quiz } = props;
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -29,12 +31,7 @@ const Quiz = (props) => {
   };
 
   const handleConfirmationYes = () => {
-    let totalScore = 0;
-    quiz.questions.forEach((question, index) => {
-      if (selectedOptions[index] === question.correctOption) {
-        totalScore += 1;
-      }
-    });
+    const totalScore = calculateScore(quiz, selectedOptions);
     setScore(totalScore);
     setShowConfirmation(false);
   };
@@ -49,22 +46,14 @@ const Quiz = (props) => {
 
   const renderOptions = (questionIndex) => {
     const options = quiz.questions[questionIndex].options;
-    const correctOption = quiz.questions[questionIndex].correctOption;
     const selectedOption = selectedOptions[questionIndex];
 
     return options.map((option, optionIndex) => {
       const isSelected = selectedOption === optionIndex;
-      const isCorrect = correctOption === optionIndex;
 
-      let optionClassName = "option-container";
+      let optionClassName = 'option-container';
       if (isSelected) {
-        optionClassName += " selected";
-      }
-      if (isSelected && isCorrect) {
-        optionClassName += " correct";
-      }
-      if (isSelected && !isCorrect) {
-        optionClassName += " incorrect";
+        optionClassName += ' selected';
       }
 
       return (
@@ -96,21 +85,25 @@ const Quiz = (props) => {
               {renderOptions(currentQuestionIndex)}
             </div>
             <div className="buttons-container">
-              <button
-                className="previous-button"
+              <Button
+                text="Previous"
                 onClick={handlePreviousClick}
                 disabled={currentQuestionIndex === 0}
-              >
-                Previous
-              </button>
+                className="previous-button"
+              />
+
               {currentQuestionIndex < quiz.questions.length - 1 ? (
-                <button className="next-button" onClick={handleNextClick}>
-                  Next
-                </button>
+                <Button
+                  className="next-button"
+                  onClick={handleNextClick}
+                  text="Next"
+                />
               ) : (
-                <button className="submit-button" onClick={handleSubmitClick}>
-                  Submit
-                </button>
+                <Button
+                  onClick={handleSubmitClick}
+                  className="submit-button"
+                  text="Submit"
+                />
               )}
             </div>
             <div className="jump-container">
@@ -120,7 +113,7 @@ const Quiz = (props) => {
                   <button
                     key={index}
                     className={`jump-button ${
-                      currentQuestionIndex === index ? "active" : ""
+                      currentQuestionIndex === index ? 'active' : ''
                     }`}
                     onClick={() => handleJumpToQuestion(index)}
                   >
@@ -143,23 +136,14 @@ const Quiz = (props) => {
       )}
 
       {showConfirmation && (
-        <div className="popup">
-          <div className="popup-content">
-            <h2>Submit Quiz</h2>
-            <p>Are you sure you want to submit the quiz?</p>
-            <div className="popup-buttons">
-              <button className="popup-button" onClick={handleConfirmationYes}>
-                Yes
-              </button>
-              <button className="popup-button" onClick={handleConfirmationNo}>
-                No
-              </button>
-            </div>
-          </div>
-        </div>
+        <Popup
+          heading="Submit Quiz"
+          message="Are you sure you want to submit the quiz?"
+          onConfirmationYes={handleConfirmationYes}
+          onConfirmationNo={handleConfirmationNo}
+        />
       )}
     </div>
   );
 };
-
 export default Quiz;
