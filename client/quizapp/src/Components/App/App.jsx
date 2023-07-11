@@ -17,15 +17,14 @@ function App() {
   useEffect(() => {
     console.log('1');
     fetchData(setQuizData);
-  }, []);
+  }, [setQuizData]);
 
   const handleStartQuiz = (name, email) => {
     setQuizStarted(true);
     setUserName(name);
     setUserEmail(email);
-    console.log(name, email);
   };
-
+  console.log(quizData);
   if (quizData && quizData.questions.length > 0) {
     return (
       <div>
@@ -37,6 +36,8 @@ function App() {
               userName={userName}
               userEmail={userEmail}
               quiz={quizData}
+              timeLimit={quizData.timeLimit}
+              passPercentage={quizData.passPercentage}
             />
           ) : (
             <StartPage

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './StartPage.css';
+import PropTypes from 'prop-types';
 
 const StartPage = (props) => {
-  const { quizDescription, onStartQuiz } = props;
+  const { quizDescription } = props;
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -42,7 +43,6 @@ const StartPage = (props) => {
 
   const handleStartClick = () => {
     if (isFormValid) {
-      console.log('Start button clicked!');
       // Perform start action or navigate to a new page
       props.onStartQuiz(name, email);
     }
@@ -84,6 +84,10 @@ const StartPage = (props) => {
       </div>
     </div>
   );
+};
+StartPage.propTypes = {
+  quizDescription: PropTypes.string.isRequired,
+  onStartQuiz: PropTypes.func.isRequired,
 };
 
 export default StartPage;

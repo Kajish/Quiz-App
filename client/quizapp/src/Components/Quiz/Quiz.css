@@ -10,8 +10,8 @@
 .quiz-header {
   text-align: center;
   font-size: 32px;
-  margin-bottom: 20px;
-  margin-top: 0;
+  margin-bottom: 10px;
+  margin-top: 10px;
   font-weight: bold;
 }
 
@@ -44,11 +44,16 @@
 }
 
 .option-container.selected {
-  background-color: #333;
+  background-color: #3a3a3a;
   color: #fff;
 }
+.option-container.selected:hover {
+  background-color: #3a3a3a; /* Maintain the selected background color on hover */
+  color: #fff; /* Maintain the selected text color on hover */
+}
 .option-container:hover {
-  background-color: #bebdbd; /* Change the background color on hover */
+  background-color: #5c5c5c63; /* Change the background color on hover */
+  border: 1px solid #ffffff;
 }
 
 .option-text {
@@ -66,37 +71,17 @@
   margin-top: 20px;
 }
 
-.previous-button,
-.next-button {
-  background-color: #333;
-  padding: 10px 20px;
-  font-size: 16px;
-
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  outline: none;
-  margin-right: 10px;
-}
-
-.previous-button:hover,
-.next-button:hover {
-  background-color: #555;
-}
-
-.previous-button:disabled,
-.previous-button:disabled:hover {
-  background-color: #999;
-  cursor: not-allowed;
-}
-
 .results-container {
   margin-top: 20px;
 }
 
 .question-result {
   margin-bottom: 20px;
+}
+.option-deselect {
+  height: auto;
+  color: rgb(255, 255, 255);
+  font-size: 12px;
 }
 
 .question-text {
@@ -211,4 +196,34 @@
 
 .popup-button:hover {
   background-color: #555;
+}
+
+.timer-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+
+.timer {
+  margin-right: 40px;
+  font-size: 18px;
+  color: #000000;
+}
+
+.timer.alert {
+  font-size: 18px;
+  color: #ff0000;
+  animation: blinker 1s infinite;
+}
+
+@keyframes blinker {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

@@ -6,9 +6,10 @@ const shortid = require("shortid");
 exports.createQuiz = async (req, res) => {
   try {
     const createdBy = req.user._id;
-    const { title, questions } = req.body;
-
+    const { title, questions, timeLimit, passPercentage } = req.body;
+    //add time limit to the data
     // Generate a unique link for the quiz
+
     const link = shortid.generate();
 
     // Create a new quiz
@@ -17,6 +18,8 @@ exports.createQuiz = async (req, res) => {
       title,
       link,
       questions,
+      timeLimit,
+      passPercentage,
     });
 
     res.status(201).json({ quiz, message: "Quiz created successfully" });

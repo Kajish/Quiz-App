@@ -15,6 +15,10 @@ const quizSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  timeLimit: {
+    type: Number,
+    required: true,
+  },
   questions: [
     {
       question: {
@@ -33,6 +37,10 @@ const quizSchema = new mongoose.Schema({
       },
     },
   ],
+  passPercentage: {
+    type: Number,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Quiz", quizSchema);

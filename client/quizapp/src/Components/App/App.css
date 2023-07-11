@@ -23,7 +23,7 @@ body::before {
   background-image: url('../../Images/background.jpg');
   background-size: cover;
   background-position: center;
-  opacity: 0.7; /* Adjust the opacity value (0.8) for desired transparency */
+  opacity: 0.55;
   z-index: -1;
-  filter: brightness(0.8) contrast(1);
+  filter: brightness(0.8) contrast(3);
 }

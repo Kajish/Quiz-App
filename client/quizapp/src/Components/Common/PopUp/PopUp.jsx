@@ -1,5 +1,5 @@
 import React from 'react';
-import './Confirmationbox.css';
+import './PopUp.css';
 
 const Popup = ({ heading, message, onConfirmationYes, onConfirmationNo }) => {
   return (

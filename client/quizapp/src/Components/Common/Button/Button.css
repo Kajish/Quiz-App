@@ -14,12 +14,12 @@
 
 .previous-button:hover,
 .next-button:hover {
-  background-color: #555;
+  background-color: #525050;
 }
 
 .previous-button:disabled,
 .previous-button:disabled:hover {
-  background-color: #999;
+  background-color: #868282;
   cursor: not-allowed;
 }
 

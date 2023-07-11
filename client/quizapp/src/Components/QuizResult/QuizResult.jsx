@@ -1,11 +1,21 @@
 import React, { useEffect } from 'react';
 import QuizResultService from '../../Services/QuizResultService';
+import PropTypes from 'prop-types';
 import './QuizResult.css';
 
 const QuizResult = (props) => {
-  const { id, userName, userEmail, quiz, selectedOptions, score } = props;
-
+  const {
+    id,
+    userName,
+    userEmail,
+    quiz,
+    selectedOptions,
+    score,
+    passPercentage,
+  } = props;
+  console.log(passPercentage);
   useEffect(() => {
+    console.log('effect triggerd');
     const submitQuiz = async () => {
       try {
         const response = await QuizResultService.submitQuizResult(
@@ -23,7 +33,8 @@ const QuizResult = (props) => {
     };
 
     submitQuiz();
-  }, [id, userName, userEmail, quiz, selectedOptions, score]);
+  }, []);
+  // , [id, userName, userEmail, quiz, selectedOptions, score]
 
   const renderQuestionResults = () => {
     return quiz.questions.map((question, index) => {
@@ -68,7 +79,7 @@ const QuizResult = (props) => {
 
   return (
     <div className="results-container">
-      <h1 className="quiz-header">{quiz.title} - Results</h1>
+      {/* <h1 className="quiz-header">{quiz.title} - Results</h1> */}
       <div className="user-info">
         <div className="user-name">
           <span className="info-label">Name: {userName}</span>
@@ -88,6 +99,16 @@ const QuizResult = (props) => {
       {renderQuestionResults()}
     </div>
   );
+};
+
+QuizResult.propTypes = {
+  id: PropTypes.string.isRequired,
+  userName: PropTypes.string.isRequired,
+  userEmail: PropTypes.string.isRequired,
+  quiz: PropTypes.object.isRequired,
+  selectedOptions: PropTypes.object.isRequired,
+  score: PropTypes.number.isRequired,
+  passPercentage: PropTypes.number.isRequired,
 };
 
 export default QuizResult;

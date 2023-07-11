@@ -2,7 +2,6 @@ import apiUrls from '../urls/apiUrls';
 import customAxios from '../CustomAxios';
 
 export const fetchData = async (setQuizData) => {
-  console.log('2');
   const urlParams = new URL(window.location.href);
   const pathParts = urlParams.pathname.split('/');
   const id = pathParts[pathParts.length - 1];
@@ -14,7 +13,6 @@ export const fetchData = async (setQuizData) => {
     id
   ) {
     const apiUrl = apiUrls.getQuiz(id);
-    console.log(apiUrl);
 
     try {
       const response = await customAxios.get(apiUrl);
